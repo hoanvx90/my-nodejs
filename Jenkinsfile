@@ -20,6 +20,10 @@ pipeline {
             }
             
             
+          },
+          "linux": {
+            echo 'build on linux'
+            
           }
         )
       }
