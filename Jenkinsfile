@@ -84,6 +84,6 @@ pipeline {
 void deploy(data) {
   sh "echo build"
   if (!data.disabledDeploy) {
-    sh "echo deployment"
+    sh "echo deployment blblbll"
   }
 }
