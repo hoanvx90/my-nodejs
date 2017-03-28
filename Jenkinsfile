@@ -17,8 +17,14 @@ pipeline {
     }
 
     stage('Pre-build') {
+      when {
+        expression {
+          return env.BRANCH_NAME == "master" || env.BRANCH_NAME.startsWith("PR-")
+        }
+      }
       steps {
         echo "Prebuild blabal dfd ddcc"
+        deploy([disabledDeploy: env.BRANCH_NAME.startsWith("PR-")])
       }
     }
 
@@ -72,5 +78,12 @@ pipeline {
   }
   environment {
     ENV_VAR1 = '123'
+  }
+}
+
+void deploy(data) {
+  sh "echo build"
+  if (!data.disabledDeploy) {
+    sh "echo deployment"
   }
 }
