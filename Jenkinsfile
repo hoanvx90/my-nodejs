@@ -7,7 +7,7 @@ pipeline {
     node {
       label 'vg-host'
     }
-    
+
   }
   stages {
     stage('Init') {
@@ -52,14 +52,14 @@ pipeline {
     stage('Test') {
       steps {
         parallel(
-          "Test": {
-            sh 'echo check'
-            
-          },
-          "Test on win": {
-            echo 'test on windowd'
-            
-          }
+            "Test": {
+              sh 'echo check'
+
+            },
+            "Test on win": {
+              echo 'test on windowd'
+
+            }
         )
       }
     }
